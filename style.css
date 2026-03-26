@@ -891,6 +891,126 @@ ul { list-style: none; }
 }
 
 /* ================================================
+   AI TOOLS & PROJECTS
+================================================ */
+.ai-tools-block {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+}
+
+.tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.tools-row span {
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.25rem 0.65rem;
+  background: var(--surface-2);
+  transition: all var(--ease);
+}
+
+.tools-row span:hover {
+  border-color: var(--gold-border);
+  color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.projects-strip {
+  margin-top: 4rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.projects-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.projects-sub {
+  font-size: 0.875rem;
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  max-width: 700px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: var(--surface);
+  transition: background var(--ease);
+}
+
+.project-card:hover {
+  background: var(--surface-2);
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+
+.project-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.project-arrow {
+  font-size: 0.9rem;
+  color: var(--muted);
+  transition: color var(--ease), transform var(--ease);
+}
+
+.project-card:hover .project-arrow {
+  color: var(--gold);
+  transform: translate(2px, -2px);
+}
+
+.project-card p {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 0.85rem;
+}
+
+.project-built {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+/* ================================================
    CONNECT
 ================================================ */
 .connect-section {
@@ -1134,6 +1254,11 @@ footer {
 
   .connect-cards {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .project-cards {
+    grid-template-columns: 1fr;
+    max-width: 100%;
   }
 
   .impact-grid {
