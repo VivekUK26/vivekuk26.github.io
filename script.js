@@ -1,10 +1,10 @@
-// Navbar: scroll effect
-const navbar = document.getElementById('navbar');
+// Nav: scroll state
+const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
+  nav.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-// Hamburger menu toggle
+// Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
@@ -12,44 +12,42 @@ hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('open');
 });
 
-// Close mobile menu when a link is clicked
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-// Active nav highlight on scroll
+// Active nav on scroll
 const sections = document.querySelectorAll('section[id]');
-const navItems = document.querySelectorAll('.nav-links a');
+const navItems = document.querySelectorAll('#nav-links a');
 
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      navItems.forEach(link => link.classList.remove('active'));
-      const activeLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-      if (activeLink) activeLink.classList.add('active');
+      navItems.forEach(l => l.classList.remove('active'));
+      const match = document.querySelector(`#nav-links a[href="#${entry.target.id}"]`);
+      if (match) match.classList.add('active');
     }
   });
-}, { threshold: 0.35 });
+}, { threshold: 0.3 });
 
 sections.forEach(s => sectionObserver.observe(s));
 
-// Fade-in on scroll for cards and timeline items
-const fadeTargets = document.querySelectorAll(
-  '.timeline-item, .stat-card, .skill-group, .cert-card, .contact-item, .education-block, .about-text, .contact-intro'
+// Scroll reveal
+const revealTargets = document.querySelectorAll(
+  '.pillar, .case-card, .phi-item, .career-item, .impact-item, .connect-card, .cred-item, .horizon-left, .horizon-right'
 );
 
-fadeTargets.forEach(el => el.classList.add('fade-in'));
+revealTargets.forEach(el => el.classList.add('reveal'));
 
-const fadeObserver = new IntersectionObserver(entries => {
-  entries.forEach((entry, i) => {
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // Stagger siblings within the same parent
-      const siblings = Array.from(entry.target.parentElement.children);
-      const delay = siblings.indexOf(entry.target) * 80;
-      setTimeout(() => entry.target.classList.add('visible'), delay);
-      fadeObserver.unobserve(entry.target);
+      const siblings = Array.from(entry.target.parentElement.children).filter(c => c.classList.contains('reveal'));
+      const idx = siblings.indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 90);
+      revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-fadeTargets.forEach(el => fadeObserver.observe(el));
+revealTargets.forEach(el => revealObserver.observe(el));
