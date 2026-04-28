@@ -34,7 +34,7 @@ sections.forEach(s => sectionObserver.observe(s));
 
 // Scroll reveal
 const revealTargets = document.querySelectorAll(
-  '.pillar, .case-card, .phi-item, .career-item, .impact-item, .connect-card, .cred-item, .horizon-left, .horizon-right'
+  '.pillar, .skill-cat, .case-card, .phi-item, .career-item, .impact-item, .connect-card, .cred-item, .horizon-left, .horizon-right'
 );
 
 revealTargets.forEach(el => el.classList.add('reveal'));
